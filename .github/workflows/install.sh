@@ -9,9 +9,9 @@ fi
 WG_LIST="$(pwd)/$CRIBL_WG_LIST"
 # Gets the access token to authenticate with the Cribl API
 echo "Running auth request"
-AUTH_RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "https://login.cribl.cloud/oauth/token" \
+AUTH_RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "https://login.cribl-playground.cloud/oauth/token" \
 -H "Content-Type: application/json" \
--d "{\"grant_type\": \"client_credentials\",\"client_id\": \"$CRIBL_CLIENT_ID\", \"client_secret\": \"$CRIBL_CLIENT_SECRET\", \"audience\": \"https://api.cribl.cloud\"}" \
+-d "{\"grant_type\": \"client_credentials\",\"client_id\": \"$CRIBL_CLIENT_ID\", \"client_secret\": \"$CRIBL_CLIENT_SECRET\", \"audience\": \"https://api.cribl-playground.cloud\"}" \
 || exit 1)
 AUTH_HTTP_CODE=$(echo "$AUTH_RESPONSE" | tail -n1)
 ACCESS_TOKEN=$(echo "$AUTH_RESPONSE" | sed '$d' | jq -r '.access_token')
