@@ -17,4 +17,4 @@ inputs:
     authType: manual
     authToken: ""
     type: tcpjson
-    port: 1114
+    port: 1115
