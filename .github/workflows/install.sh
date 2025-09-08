@@ -3,7 +3,7 @@ USE_HTTPS_GIT=$PUBLIC_REPO
 if [[ "$USE_HTTPS_GIT" == "true" ]]; then
 PACK_REPO_URL="$PACK_REPO_HTTPS_URL"
 else
-PACK_REPO_URL="git+https://$REPO_OWNER:$PACK_REPO_SSH_TOK3N@github.com/$REPO_NAME.git"
+PACK_REPO_URL="git+https://$REPO_OWNER:$PACK_REPO_SSH_TOKEN@github.com/$REPO_NAME.git"
 fi
 # Reads the list of worker groups to install the pack to
 WG_LIST="$(pwd)/$CRIBL_WG_LIST"
@@ -14,7 +14,7 @@ AUTH_RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "https://login.cribl.cloud/o
 -d "{\"grant_type\": \"client_credentials\",\"client_id\": \"$CRIBL_CLIENT_ID\", \"client_secret\": \"$CRIBL_CLIENT_SECRET\", \"audience\": \"https://api.cribl.cloud\"}" \
 || exit 1)
 AUTH_HTTP_CODE=$(echo "$AUTH_RESPONSE" | tail -n1)
-ACCESS_TOK3N=$(echo "$AUTH_RESPONSE" | sed '$d' | jq -r '.access_token')
+ACCESS_TOKEN=$(echo "$AUTH_RESPONSE" | sed '$d' | jq -r '.access_token')
 echo "Checking auth response"
 # Checks if the authentication request was successful
 if [ "$AUTH_HTTP_CODE" -eq 200 ]; then
@@ -31,7 +31,7 @@ while IFS= read -r WORKERGROUP || [[ -n "$WORKERGROUP" ]]; do
 MAIN_ENDPOINT="$CRIBL_ENDPOINT"
 WG_ENDPOINT="$MAIN_ENDPOINT/$WORKERGROUP/packs"
 INSTALL_RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "$WG_ENDPOINT" \
--H "Authorization: Bearer $ACCESS_TOK3N" \
+-H "Authorization: Bearer $ACCESS_TOKEN" \
 -H 'Content-Type: application/json' \
 -d "{\"source\": \"$PACK_REPO_URL\",\"force\":$OVERRIDE,\"spec\":\"$PACK_BRANCH\",\"allowCustomFunctions\":false}" \
 || exit 1)

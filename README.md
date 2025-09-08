@@ -17,7 +17,7 @@ has only been tested on Github.
 * In the Cribl Cloud console generate a Client ID and Client Secret. 
 * If using a private repository in Github, generate a Github Personal Access token. This allows Cribl to pull from the private Git repository.
 * In the HelloPacks Github Repository, navigate to Settings> Secrets & variables> Actions> 
-	* Set the following Secrets: CRIBL_CLIENT_ID, CRIBL_CLIENT_SECRET, REPO_PERSONAL_ACCESS_TOK3N(if using a private repo)
+	* Set the following Secrets: CRIBL_CLIENT_ID, CRIBL_CLIENT_SECRET, REPO_PERSONAL_ACCESS_TOKEN(if using a private repo)
 	* Set the following Variables: TEST_ENDPOINT, PROD_ENDPOINT example format **https://**<instance_id>**/api/v1/m** -ensure you use https and do not include trailing /
 ## Using The Pack's Github workflow
 ----
