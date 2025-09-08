@@ -3,7 +3,7 @@ USE_HTTPS_GIT=$PUBLIC_REPO
 if [[ "$USE_HTTPS_GIT" == "true" ]]; then
 PACK_REPO_URL="$PACK_REPO_HTTPS_URL"
 else
-PACK_REPO_URL="git+https://$REPO_OWNER:$PACK_REPO_SSH_TOKEN@github.com/$REPO_NAME.git"
+PACK_REPO_URL="git+https://$REPO_OWNER:$PACK_REPO_SSH_TOK3N@github.com/$REPO_NAME.git"
 fi
 # Reads the list of worker groups to install the pack to
 WG_LIST="$(pwd)/$CRIBL_WG_LIST"
