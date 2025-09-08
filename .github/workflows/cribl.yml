@@ -42,7 +42,7 @@ jobs:
           CRIBL_ENDPOINT: ${{ vars.TEST_ENDPOINT }}
           CRIBL_WG_LIST: test_worker_groups.txt
           PACK_REPO_HTTPS_URL: git+${{github.server_url}}/${{github.repository}}.git
-          PACK_REPO_SSH_TOKEN: ${{  secrets.REPO_PERSONAL_ACCESS_TOK3N  }}
+          PACK_REPO_SSH_TOK3N: ${{  secrets.REPO_PERSONAL_ACCESS_TOK3N  }}
           REPO_OWNER: ${{  github.repository_owner  }}
           REPO_NAME: ${{  github.repository  }}
           # Set the install type to override the install if a pack exists in a destination worker group
@@ -75,7 +75,7 @@ jobs:
           CRIBL_ENDPOINT: ${{ vars.PROD_ENDPOINT }}
           CRIBL_WG_LIST: prod_worker_groups.txt
           PACK_REPO_HTTPS_URL: ${{github.server_url}}/${{github.repository}}.git
-          PACK_REPO_SSH_TOKEN: ${{  secrets.REPO_PERSONAL_ACCESS_TOK3N  }}
+          PACK_REPO_SSH_TOK3N: ${{  secrets.REPO_PERSONAL_ACCESS_TOK3N  }}
           REPO_OWNER: ${{  github.repository_owner  }}
           REPO_NAME: ${{  github.repository  }}
           # Set the install type to override the install if a pack exists in a destination worker group
